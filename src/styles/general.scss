@@ -1,0 +1,65 @@
+@import "mixins";
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .product {
+    text-align: center;
+    margin-bottom: 20px;
+    //margin: 20px 10px;
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+
+      svg {
+        width: 30px;
+      }
+    }
+
+    .price {
+      font-weight: 500;
+    }
+
+
+    .product-thumbnail {
+      width: 100%;
+      object-position: center;
+    }
+  }
+}
+
+.card {
+  box-shadow: 0 5px 18px 0 #00000024;
+  border-radius: 4px;
+  padding: 15px;
+  transition: 0.5s ease all;
+
+  &:hover {
+    box-shadow: 0 5px 25px 0 #00000048;
+    transform: translateY(3px);
+  }
+}
+.review-item{
+  margin: 20px 10px;
+}
+.icon{
+  @include icon;
+}

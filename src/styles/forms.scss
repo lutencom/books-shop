@@ -1,0 +1,78 @@
+@import "variables";
+
+form {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    border-bottom: 1px solid $color_4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: 0.5s ease all;
+    border-radius: 0;
+
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      border-color: $color_1;
+      outline: none;
+    }
+  }
+
+  label {
+    position: relative;
+    top: 0;
+    transition: 0.5s ease all;
+    color: $color_3;
+  }
+
+  .formInput:hover {
+    label {
+      top: 0;
+      font-size: 12px;
+    }
+  }
+
+  .has-content {
+    label {
+      top: 0;
+      font-size: 12px;
+    }
+  }
+
+  input[type="submit"] {
+    margin-top: 15px;
+  }
+
+  textarea {
+    height: 150px;
+  }
+}
+
+input[type="submit"],
+button,
+a.button {
+  @include button;
+}
+
+.button.full {
+  background-color: $color_1;
+  color: #fff;
+  border: 2px solid $color_1;
+  font-weight: 500;
+
+}
+
+.button.outline {
+  color: $color_1;
+  border: 2px solid $color_1;
+
+  &:hover {
+    color: #fff;
+  }
+}

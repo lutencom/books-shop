@@ -1,0 +1,30 @@
+@import "variables";
+
+@mixin button {
+  border-radius: 3px;
+  padding: 10px 20px;
+  width: auto;
+  outline: none;
+  transition: 0.5s ease all;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  &:hover {
+    background-color: $color_hover;
+    border-color: $color_hover;
+  }
+}
+
+@mixin icon {
+  svg {
+    cursor: pointer;
+    fill: $color_1;
+    transition: 0.5s ease all;
+  }
+  &:hover {
+    svg {
+      transform: scale(1.2);
+    }
+  }
+}

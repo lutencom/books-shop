@@ -1,0 +1,18 @@
+.cart-products.table{
+display: table;
+  width: 100%;
+  .cart-item{
+    .column:last-child{
+      text-align: right;
+    }
+    .item-info, .item-price, .item-quantity{
+      padding: 0 15px;
+    }
+  }
+  .description{
+    .column{
+      padding-bottom: 10px;
+    }
+
+  }
+}

@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.cart-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 15px;
+
+  .product-thumbnail {
+    width: 80px;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 15px;
+    margin-top: 5px;
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+
+    h5 {
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 14px;
+    }
+  }
+}

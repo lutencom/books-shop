@@ -1,0 +1,34 @@
+@import "src/styles/variables";
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  padding: 0;
+  top: 60px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 999;
+  .cart-dropdown-title{
+    padding-left:15px;
+    padding-top: 10px;
+  }
+  .cart-products{
+    height: 250px;
+    width: 250px;
+    //margin: 10px 0;
+    overflow-y: scroll;
+    padding: 15px;
+  }
+  .button{
+    margin: 15px;
+  }
+  .closeIcon{
+    fill: $color_1;
+    position: absolute;
+    right: 20px;
+    width: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+} 

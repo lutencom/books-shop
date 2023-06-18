@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.header {
+
+  .logo {
+    svg {
+      width: 50px;
+      height: auto;
+
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+
+    .menu-item {
+      margin-left: 15px;
+
+      &:hover {
+        color: $color_1;
+      }
+    }
+
+    .cart-icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+
+      .cart-icon {
+        width: 28px;
+        }
+
+      .counter {
+        position: absolute;
+        top: 15px;
+        font-size: 13px;
+      }
+    }
+  }
+}

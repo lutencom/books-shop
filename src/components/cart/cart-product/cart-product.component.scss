@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+
+.cart-item.row {
+  display: table-row;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    content: "";
+  }
+
+  &:not(:first-child) {
+    &:before {
+      background-color: $color_4;
+    }
+  }
+
+  .column {
+    display: table-cell;
+    vertical-align: middle;
+
+    .quantity-block {
+      display: flex;
+      align-items: center;
+    }
+
+    .price {
+      font-weight: 600;
+      display: inline-block;
+      min-width: 100px;
+    }
+
+    .icon {
+      svg {
+        width: 13px;
+      }
+    }
+
+  }
+  .item-remove{
+    text-align: right;
+  }
+}
