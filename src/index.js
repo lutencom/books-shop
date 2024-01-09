@@ -1,29 +1,29 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
-import {UserProvider} from './components/contexts/user.context';
-import {BooksProvider} from './components/contexts/products.context';
+import {Provider} from "react-redux";
 import {ReviewsProvider} from "./components/contexts/reviews.context";
-import {CartPopupProvider} from './components/contexts/cart-dropdown.context';
-
+import {CartPopupProviderReducer} from './components/contexts/cart-dropdown-reducer.context';
+import {store} from "./components/store/store";
 import './index.css';
 import App from './App';
+import {WishListProvider} from "./components/contexts/wishlist.context";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <UserProvider>
-                <BooksProvider>
-                    <CartPopupProvider>
+        <Provider store={store}>
+            <BrowserRouter>
+                {/*<CartPopupProviderReducer>*/}
+                    <WishListProvider>
                         <ReviewsProvider>
                             <App/>
                         </ReviewsProvider>
-                    </CartPopupProvider>
-                </BooksProvider>
-            </UserProvider>
-        </BrowserRouter>
+                    </WishListProvider>
+                {/*</CartPopupProviderReducer>*/}
+            </BrowserRouter>
+        </Provider>
     </React.StrictMode>
 );
 

@@ -5,11 +5,13 @@ import {Link} from 'react-router-dom';
 import {UserContext} from "../contexts/user.context";
 import {ReactComponent as LogIn} from "../../Assets/shop-logos/right-to-bracket-duotone.svg";
 import {ReactComponent as LogOut} from "../../Assets/shop-logos/right-from-bracket-duotone.svg";
+import {useSelector} from "react-redux";
+import {selectCurrentUser} from "../store/user/user.selector";
+
 
 
 const TopBar = () => {
-    const {currentUser} = useContext(UserContext);
-
+    const currentUser = useSelector(selectCurrentUser)
     const signOutHandler = async () => {
         await signOutCustom();
     }

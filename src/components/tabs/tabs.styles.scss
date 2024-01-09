@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.tab-headings {
+  display: flex;
+
+  .tab-title {
+    padding: 3px 5px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 3px;
+    cursor: pointer;
+    transition: 0.5s ease background-color;
+
+    &:hover {
+      background-color: $color_hover;
+      border-color: $color_hover;
+      color: #fff;
+    }
+  }
+
+  .active-tab {
+    .tab-title {
+      background-color: $color_1;
+      color: #fff;
+      border-color: $color_1;
+    }
+  }
+}

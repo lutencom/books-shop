@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
-import {CartPopup} from "../../contexts/cart-dropdown.context";
+import {CartPopups} from "../../contexts/cart-dropdown-reducer.context";
 import "./cart-totals.style.scss";
 
 const CartTotal = () => {
-    const {cartFinalTotals} = useContext(CartPopup);
+    const {cartFinalTotals} = useContext(CartPopups);
     return (
         <div className='cart-total-block-inner'>
             <h3>Cart totals</h3>

@@ -2,11 +2,12 @@ import React, {useContext} from 'react';
 import './cart.page.scss';
 import CartProduct from "../../components/cart/cart-product/cart-product.component";
 import CartTotal from "../../components/cart/cart-totals/cart-totals.component";
-import {CartPopup} from "../../components/contexts/cart-dropdown.context";
+import {CartPopups} from "../../components/contexts/cart-dropdown-reducer.context";
 import CartProducts from "../../components/cart/mini-cart-product/mini-cart-product.component";
+import CartList from "../../components/cart-list/cart-list";
 
 const CartPage = () => {
-    const {cartProducts} = useContext(CartPopup);
+    const {cartProducts} = useContext(CartPopups);
     return (
         <div className="container">
             <div className="inner-container grid">
@@ -22,16 +23,16 @@ const CartPage = () => {
                                 <div className="column">Price</div>
                                 <div className="column">Quantity</div>
                                 <div className="column">Remove</div>
-                            </div>) : (<h3>No products in cart</h3>)}
-                        {cartProducts.map((product) => {
-                            return (
-                                <CartProduct key={product.id} name={product.name || product.title} imgURL = {product.imageUrl || product.thumbnail} product={product}/>
-                            )
-                        })}
+                            </div>) : <h3>No books here in cart... </h3>}{
+                        cartProducts.map((product) => {
+                            return <CartProduct type='cartProduct' key={product.id} name={product.name || product.title}
+                                                imgURL={product.imageUrl || product.thumbnail} product={product}/>
+                        })
+                    }
                     </div>
                 </div>
                 <div className="col-1-3">
-                    <CartTotal />
+                    <CartTotal/>
                 </div>
             </div>
         </div>

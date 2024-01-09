@@ -64,19 +64,15 @@ export const getCategoriesAndDocuments = async () => { //get from firestore
     const collectionRef = collection(db, 'categories');
     const queryData = query(collectionRef);
     const querySnapshot = await getDocs(queryData);
-    const categoryList = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
-        const {title, items} = docSnapshot.data();
-        accumulator[title.toLowerCase()] = items;
-        return accumulator;
-    }, {})
-    return categoryList;
-}
+
+    return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
+ }
 export const getReviewsFromDB = async () => { //get from firestore
     const collectionRef = collection(db, 'reviews ');
     const queryData = query(collectionRef);
     const querySnapshot = await getDocs(collection(db, "reviews"));
 
-const reviewList = [];
+    const reviewList = [];
     querySnapshot.forEach((doc) => {
         const singleReview = doc.data();
         reviewList.push(singleReview);

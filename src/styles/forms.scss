@@ -3,6 +3,7 @@
 form {
   input[type="text"],
   input[type="password"],
+  input[type="number"],
   input[type="email"],
   textarea {
     border-bottom: 1px solid $color_4;
@@ -75,4 +76,9 @@ a.button {
   &:hover {
     color: #fff;
   }
+}
+.select{
+  border: none;
+  outline: none;
+  padding: 10px;
 }

@@ -4,14 +4,16 @@ import FormInput from "../../form-input/form-input.component";
 import Textarea from "../../textarea/textarea.component";
 import Masonry from "react-masonry-css";
 import {ReviewsContext} from "../../contexts/reviews.context";
+import Stars from "../../stars/stars.component";
+import Accordion from "../../acccordion/accordion";
+import Tabs from "../../tabs/tabs.component";
+import ProgressBar from "../../progress-bar/progress-bar.component";
 
 const Reviews = () => {
     const {currentUser} = useContext(UserContext);
 
-    const currentName = currentUser.displayName;
-
     const initialFields = {
-        user: {currentUser} ? currentName : 'Your name',
+        user: 'Your name',
         review: ""
     }
     const {reviews, reviewsFromDB, setReviewsList} = useContext(ReviewsContext);
@@ -37,22 +39,28 @@ const Reviews = () => {
                 <div className="col-1">
                     <h1>Reviews</h1>
                 </div>
-                { currentUser &&
-                <div className="col-1-3">
-                    <form action="" onSubmit={handleSubmit}>
-                        <FormInput name="user"
-                                   type="text"
-                                   value={user}
-                                   onChange={handleInput}
-                                   label="Add your name here..."/>
-                        <Textarea name="review"
-                                  type="text"
-                                  value={review}
-                                  onChange={handleInput}
-                                  label="Add your review here..."/>
-                        <input type="submit" className='button full' value='Display review'/>
-                    </form>
-                </div>
+                {
+                    <>
+                        <div className="col-1-3">
+
+
+                            <form action="" onSubmit={handleSubmit}>
+
+                                <FormInput name="user"
+                                           type="text"
+                                           value={user}
+                                           onChange={handleInput}
+                                           label="Add your name here..."/>
+                                <Textarea name="review"
+                                          type="text"
+                                          value={review}
+                                          onChange={handleInput}
+                                          label="Add your review here..."/>
+                                <input type="submit" className='button full' value='Display review'/>
+                            </form>
+                        </div>
+
+                    </>
                 }
             </div>
             <div className="inner-container">
@@ -68,6 +76,7 @@ const Reviews = () => {
                         )
                     )}
                 </Masonry>
+
             </div>
         </div>
 

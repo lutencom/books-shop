@@ -7,7 +7,7 @@ const checkProductsToAdd = (cartProducts, productToAdd) => {
     );
     if (existingCartProduct) {
         return (cartProducts.map(product =>
-            product.id === productToAdd.id ? {...product, quantity: product.quantity + 1 } : product
+            product.id === productToAdd.id ? {...product, quantity: product.quantity + 1} : product
         ))
     }
     return [...cartProducts, {...productToAdd, quantity: 1, isAlreadyAdded:true}];// besides existing CartProducts, add the newly added "ProductToAdd, with quantity of 1"
@@ -30,11 +30,10 @@ const checkProductsToRemove = (cartProducts, cartItemToRemove) => {
     ))
 }
 
-export const CartPopup = createContext({
+export const
+    CartPopup = createContext({
     isOpen: false,
-
-    isProductAdded: false,
-    checkIsAdded: ()=> {},
+    isAlreadyAdded: false,
     togglePopup: () => {
     },
     cartProducts: [], // products from cart
@@ -51,8 +50,6 @@ export const CartPopup = createContext({
 export const CartPopupProvider = ({children}) => {
 
     const [isOpen, togglePopup] = useState(false);
-
-    const [isAdded, checkIsAdded] = useState(false);
 
     const [cartProducts, setCartProducts] = useState([]);
 
@@ -76,6 +73,7 @@ export const CartPopupProvider = ({children}) => {
         setCartProducts(checkProductsToAdd(cartProducts, productToAdd))
     }
 
+
     const decrementProductFromCart = (cartItemToRemove) => {
         setCartProducts(checkProductsToDecrement(cartProducts, cartItemToRemove))
     }
@@ -85,9 +83,7 @@ export const CartPopupProvider = ({children}) => {
 
     const value = {
         isOpen,
-        isAdded,
         togglePopup,
-        checkIsAdded,
         cartProducts,
         addProductToCart,
         cartTotal,

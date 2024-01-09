@@ -5,16 +5,17 @@ import Product from "../product/product.component";
 import { useParams } from 'react-router-dom';
 import {BooksContext} from "../contexts/products.context";
 import './collection.styles.scss';
+import {useSelector} from "react-redux";
+import {bookCategories} from "../store/categories/category.selector";
 
 const CollectionBooks = () => {
     const { catUrl } = useParams();
-    const {booksCategories} = useContext(BooksContext);
+    const booksCategories = useSelector(bookCategories);
+
     const [books, setBooks] = useState(booksCategories[catUrl]);
     useEffect(()=>{
         setBooks(booksCategories[catUrl]);
     }, [catUrl, booksCategories])
-    // const books  = booksCategories[catUrl];
-    // console.log( books );
     return (
         <div className="container">
         <div className='collection-preview'>

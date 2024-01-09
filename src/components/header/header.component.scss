@@ -32,12 +32,36 @@
       .cart-icon {
         width: 28px;
         }
+      .shopping-cart{
+        position: relative;
+        top: -5px;
+      }
 
       .counter {
         position: absolute;
-        top: 15px;
         font-size: 13px;
       }
+    }
+  }
+  .mobile-menu-icon{
+    svg{
+      width: 20px;
+      fill: $color_1;
+    }
+  }
+  .mobile-menu{
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    top: 30px;
+    bottom: 30px;
+    background-color: #fff;
+    .close-menu-icon{
+      width: 25px;
+      fill: $color_1;
+      align-self: end;
     }
   }
 }
