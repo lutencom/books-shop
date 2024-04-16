@@ -1,41 +1,79 @@
-import {createContext, useEffect, useState} from 'react';
+import {createContext, useReducer} from 'react';
 
+const checkItemForWishlist = (wishlistItems, productToWish) => {
+    const isPresentInWishList = wishlistItems.find((prod) => prod.id === productToWish.id);
+    if (!isPresentInWishList) {
+        return [...wishlistItems, productToWish]
+    }
+}
+const checkItemsToRemove = (wishListItems, prodToRemove) => {
+    return wishListItems.filter(item => item.id !== prodToRemove.id);
+}
 export const WishlistContext = createContext({
     wishlistItems: [],
     wishlistCount: 0,
-    isWishListPopupOpen:false,
-    openWishListPopup:()=>{},
-    addItemToWishlist: () => {
+    isWishListPopupOpen: false,
+    openWishListPopup: () => {
     },
-    removeProductfromWishlist:()=>{}
+    addItemsToWishList: () => {
+    },
+    removeProductfromWishlist: () => {
+    }
 })
-export const WishListProvider = ({children}) => {
-    const [wishlistItems, addToWishList] = useState([])
-    const [wishlistCount, countWishList] = useState(0)
-    const [isWishListOpen, openPopUp] = useState(false)
+const wishListInitialData = {
+    wishlistItems: [],
+    isWishListPopupOpen: false,
+    wishlistCount: 0
+}
+const reducerMethod = (state, action) => {
+    const {type, payload} = action;
+    switch (type) {
+        case 'wishlistItems':
+            return {...state, ...payload}
+        case 'isWishListPopupOpen':
+            return {...state, isWishListPopupOpen: payload}
+        default: {
 
-    const addItemToWishlist = (productToWish) => {
-        const isPresentInWishList = wishlistItems.find((prod) => prod.id === productToWish.id);
-        if (!isPresentInWishList) {
-            addToWishList([...wishlistItems, productToWish])
         }
     }
-    useEffect(()=>{
-        countWishList(wishlistItems.length);
-    },[wishlistItems])
-
-    const openWishListPopup = () => {
-        openPopUp(!isWishListOpen);
+}
+export const WishListProvider = ({children}) => {
+    const [{
+        wishlistItems,
+        isWishListPopupOpen,
+        wishlistCount
+    }, dispatch] = useReducer(reducerMethod, wishListInitialData);
+    const updateWishListProductsHandler = (addedToWishListProducts) => { //handler function which adds to the state
+        const count = addedToWishListProducts.length;
+        dispatch({
+            type: "wishlistItems",
+            payload: {
+                wishlistItems: addedToWishListProducts,
+                wishlistCount: count
+            }
+        })
+    }
+    const addItemsToWishList = (productToWish) => {
+        const addedToWishListProducts = checkItemForWishlist(wishlistItems, productToWish)
+        updateWishListProductsHandler(addedToWishListProducts)
     }
     const removeProductfromWishlist = (prodToRemove) => {
-        addToWishList(wishlistItems.filter(item=>item.id !== prodToRemove.id))
+        const addedToWishListProducts = checkItemsToRemove(wishlistItems, prodToRemove)
+        updateWishListProductsHandler(addedToWishListProducts)
     }
+    const openWishListPopup = () => {
+        dispatch({
+            type: 'isWishListPopupOpen',
+            payload: !isWishListPopupOpen
+        })
+    }
+
     const value = {
         wishlistItems,
         wishlistCount,
-        isWishListOpen,
+        isWishListPopupOpen,
         openWishListPopup,
-        addItemToWishlist,
+        addItemsToWishList,
         removeProductfromWishlist
     }
     return <WishlistContext.Provider value={value}> {children} </WishlistContext.Provider>

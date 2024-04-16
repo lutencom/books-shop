@@ -10,9 +10,9 @@ export const BooksProvider = ({children}) => {
     const [booksCategories, getBooksCategories] = useState({});
 
     //This should run only once.If running multiple times, it will set new values in db
-    // useEffect(() => {
-    //     addCollectionAndDocument('categories', Data_books)
-    // }, [])
+    useEffect(() => {
+        addCollectionAndDocument('categories', Data_books)
+    }, [])
 
     useEffect(() => {
         const getCategoriesMap = async () => {

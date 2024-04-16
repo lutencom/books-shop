@@ -6,17 +6,26 @@ import {ReactComponent as CloseIcon} from "../../../Assets/shop-logos/xmark-soli
 
 import {Link} from 'react-router-dom';
 import Product from "../../product/product.component";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCartProducts, selectCartTotal, selectTogglePopup} from "../../store/cart/cart.selector";
+import {togglePopupAction} from "../../store/cart/cart.action";
 
 const CartDropdown = () => {
-    const {cartProducts} = useContext(CartPopups);
-    const {toggleClick} = useContext(CartPopups);
+    const dispatch = useDispatch();
+    const cartProducts = useSelector(selectCartProducts);
+    const isOpen = useSelector(selectTogglePopup);
+    const toggleClick = () => {
+        dispatch(togglePopupAction(!isOpen))
+    }
 
     return (
         <div className="cart-dropdown card" id="cartDropdown">
             <div className="closeIcon"><CloseIcon onClick={toggleClick}/></div>
             <div className="cart-dropdown-title"><h3>Cart products</h3></div>
             <div className="cart-products">
-                {cartProducts.map((product) => <CartProducts key={product.id} name={product.name || product.title} imgURL = {product.imageUrl || product.thumbnail} product={product} /> )}
+                {cartProducts.map((product) => <CartProducts key={product.id} name={product.name || product.title}
+                                                             imgURL={product.imageUrl || product.thumbnail}
+                                                             product={product}/>)}
             </div>
             <Link onClick={toggleClick} to={"/cart"} className='menu-item cart-menu-item button outline'>
                 Go to cart

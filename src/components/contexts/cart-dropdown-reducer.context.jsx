@@ -1,6 +1,6 @@
 import React, {useReducer, createContext} from "react";
 
-const checkProductsToAdd = (cartProducts, productToAdd, isItemAdded) => {
+const checkProductsToAdd = (cartProducts, productToAdd) => {
 
     const existingCartProduct = cartProducts.find(
         (product) => product.id === productToAdd.id
@@ -66,7 +66,7 @@ export const CartPopupProviderReducer = ({children}) => {
 
     const [{ isOpen, cartProducts, cartTotal, cartFinalTotals}, dispatch] = useReducer(reducerMethod, initialData);
 
-    const updateCartItemsHandler = (updatedProds) => {
+    const updateCartItemsHandler = (updatedProds) => {  //handler functions which updates the state
         const newCartTotal = updatedProds.reduce((prevTotalQuantity, updatedTotalQuantity) =>
             prevTotalQuantity + updatedTotalQuantity.quantity, 0
         );

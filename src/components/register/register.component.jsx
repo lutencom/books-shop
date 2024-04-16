@@ -50,7 +50,7 @@ const Register = () => {
     return (
         <div className="register form">
             <h2>Register form</h2>
-            <form onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
                 <FormInput type='text'
                            name='displayName'
                            value={displayName}

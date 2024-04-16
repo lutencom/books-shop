@@ -49,7 +49,7 @@ const SignInHook = () => {
 
     return (
         <div className='sign-in form'>
-            <form onSubmit={HandleSubmit}>
+            <form className='form' onSubmit={HandleSubmit}>
                 <h2>Sign in with your name and password!</h2>
                 <FormInput type='email'
                            name='email'

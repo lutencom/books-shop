@@ -30,7 +30,7 @@ const ContactForm = () => {
     }
     return (
         <>
-            <form onSubmit={sendData} action="">
+            <form className='form' onSubmit={sendData} action="">
                 <input value={userName} onChange={getData} type="text" name='userName'
                        placeholder='Your name here ...'/>
                 <input value={userFamily} onChange={getData} type="text" name='userFamily'

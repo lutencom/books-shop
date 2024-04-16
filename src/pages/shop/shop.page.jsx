@@ -7,6 +7,8 @@ import {
     getCategoriesAndDocuments,
 } from "../../components/firebase/firebase.utils";
 import {setCategories} from "../../components/store/categories/category.action";
+import SingleProductPage from "../../components/product/product-single-page";
+import SingleProduct from "../../components/product/product-single-page";
 
 const ShopPage = () => {
     const dispatch = useDispatch();
@@ -22,6 +24,8 @@ const ShopPage = () => {
         <Routes>
             <Route index element={<ShopProducts/>} />
             <Route path=':catUrl' element={<CollectionBooks />}/>
+            <Route path=':productUrl' element={<SingleProduct />}/>
+            <Route path=':catUrl/:productUrl' element={<SingleProduct />}/>
         </Routes>
 
     )

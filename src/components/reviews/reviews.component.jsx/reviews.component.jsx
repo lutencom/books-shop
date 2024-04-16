@@ -43,8 +43,7 @@ const Reviews = () => {
                     <>
                         <div className="col-1-3">
 
-
-                            <form action="" onSubmit={handleSubmit}>
+                            <form className='form' action="" onSubmit={handleSubmit}>
 
                                 <FormInput name="user"
                                            type="text"

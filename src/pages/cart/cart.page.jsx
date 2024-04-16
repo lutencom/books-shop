@@ -5,9 +5,12 @@ import CartTotal from "../../components/cart/cart-totals/cart-totals.component";
 import {CartPopups} from "../../components/contexts/cart-dropdown-reducer.context";
 import CartProducts from "../../components/cart/mini-cart-product/mini-cart-product.component";
 import CartList from "../../components/cart-list/cart-list";
+import {useSelector} from "react-redux";
+import {selectCartProducts} from "../../components/store/cart/cart.selector";
 
 const CartPage = () => {
-    const {cartProducts} = useContext(CartPopups);
+    // const {cartProducts} = useContext(CartPopups);
+    const cartProducts = useSelector(selectCartProducts);
     return (
         <div className="container">
             <div className="inner-container grid">

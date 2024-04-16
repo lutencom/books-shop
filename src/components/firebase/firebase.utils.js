@@ -67,6 +67,7 @@ export const getCategoriesAndDocuments = async () => { //get from firestore
 
     return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
  }
+
 export const getReviewsFromDB = async () => { //get from firestore
     const collectionRef = collection(db, 'reviews ');
     const queryData = query(collectionRef);

@@ -6,9 +6,12 @@ import CartProducts from "../../components/cart/mini-cart-product/mini-cart-prod
 import {WishlistContext} from "../../components/contexts/wishlist.context";
 import CartList from "../../components/cart-list/cart-list";
 import CartTotal from "../../components/cart/cart-totals/cart-totals.component";
+import {useSelector} from "react-redux";
+import {wishListItemsSelector} from "../../components/store/wishlist/wishlist.selector";
 
 const WishlistPage = () => {
-    const {wishlistItems} = useContext(WishlistContext);
+    // const {wishlistItems} = useContext(WishlistContext);
+    const wishlistItems = useSelector(wishListItemsSelector)
     return (
         <div className="container">
             <div className="inner-container grid">

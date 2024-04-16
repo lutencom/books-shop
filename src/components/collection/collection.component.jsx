@@ -11,7 +11,6 @@ import {bookCategories} from "../store/categories/category.selector";
 const CollectionBooks = () => {
     const { catUrl } = useParams();
     const booksCategories = useSelector(bookCategories);
-
     const [books, setBooks] = useState(booksCategories[catUrl]);
     useEffect(()=>{
         setBooks(booksCategories[catUrl]);

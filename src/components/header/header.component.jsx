@@ -15,13 +15,13 @@ import WishlistPopup from "../wishlist/wishlistPopup";
 import {selectTogglePopup} from "../store/cart/cart.selector";
 import {useSelector, useDispatch} from "react-redux";
 import {togglePopupAction} from "../store/cart/cart.action"
+import {wishListPopup} from "../store/wishlist/wishlist.selector";
 
 
 const Header = () => {
 
-    const {isOpen} = useSelector(selectTogglePopup);
-
-    const {isWishListOpen} = useContext(WishlistContext);
+    const isOpen = useSelector(selectTogglePopup);
+    const isWishListPopupOpen = useSelector(wishListPopup);
     const [isMobileMenuOpen, openMobileMenu] = useState(false);
     const mobileMenuHandler = () => {
         openMobileMenu(!isMobileMenuOpen);
@@ -67,7 +67,7 @@ const Header = () => {
                     }
 
                     {isOpen && <CartDropdown/>}
-                    {isWishListOpen && <WishlistPopup/>}
+                    {isWishListPopupOpen && <WishlistPopup/>}
                 </div>
             </div>
             {isMobileMenuOpen && <div className='mobile-menu card'>

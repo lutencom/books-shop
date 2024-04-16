@@ -1,0 +1,35 @@
+@import "src/styles/variables";
+.single-product-page{
+  .img-product{
+    width: 80%;
+    img{
+      width: 100%;
+    }
+  }
+  .price{
+    font-size: 30px;
+    color:$color_1;
+    font-weight: 600;
+  }
+  .add-to-cart{
+    .quantity-block {
+      display: flex;
+      align-items: center;
+      .icon {
+        svg {
+          width: 13px;
+        }
+      }
+      .itemsNumber{
+        border-radius: 3px;
+        padding: 11px 20px;
+        border: 1px solid #ccc;
+        width: 80px;
+        margin-right: 20px;
+      }
+    }
+    input[type="submit"]:active{
+      background-color: $red;
+    }
+  }
+}
